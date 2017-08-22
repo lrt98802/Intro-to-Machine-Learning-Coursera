@@ -17,26 +17,20 @@ function [theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters
     %       of the cost function (computeCostMulti) and gradient here.
     %
 
-    updates = [];
+    delta = [];
 
-    for i = 1:size(X,2)
-
-      theta_temp = (X * theta) - y;
-
-      for j = 1:m
-        theta_temp(j) *= X(j, i);
-      endfor
-
-      theta_temp = sum(theta_temp) / m * alpha;
-
-      updates = [updates; theta_temp];
+    % difference storing the difference between hypothesis output and real value
+    difference = (X * theta) - y;
+    delta = repmat(difference, 1, size(X, 2)); % delta is now a mxm vectors
 
 
+    % perform the summation and term-by-term multiplication
+    delta = sum(X .* delta, 1) / m;
 
-    endfor
+    % perform the updates
+    theta = (theta - (alpha * delta'));
 
 
-    theta = theta - updates;
 
 
     % ============================================================

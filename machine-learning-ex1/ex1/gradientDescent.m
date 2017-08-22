@@ -27,7 +27,7 @@ for iter = 1:num_iters
     theta_1 = sum(theta_1) / m * alpha;
 
 
-    % perform the updates
+    % perform the simultaneous updates
     theta(1) = theta(1) - theta_0;
     theta(2) = theta(2) - theta_1;
 
