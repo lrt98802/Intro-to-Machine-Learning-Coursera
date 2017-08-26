@@ -80,9 +80,9 @@ pause;
 % Compute and display cost and gradient
 % with all-ones theta and lambda = 10
 test_theta = ones(size(X,2),1);
-[cost, grad] = costFunctionReg(test_theta, X, y, 10);
+[cost, grad] = costFunctionReg(test_theta, X, y, lambda);
 
-fprintf('\nCost at test theta (with lambda = 10): %f\n', cost);
+fprintf('\nCost at test theta (with lambda = %f): %f\n', lambda, cost);
 fprintf('Expected cost (approx): 3.16\n');
 fprintf('Gradient at test theta - first five values only:\n');
 fprintf(' %f \n', grad(1:5));
@@ -107,7 +107,7 @@ pause;
 initial_theta = zeros(size(X, 2), 1);
 
 % Set regularization parameter lambda to 1 (you should vary this)
-lambda = 1;
+% lambda = 0.0025;
 
 % Set Options
 options = optimset('GradObj', 'on', 'MaxIter', 400);
@@ -132,5 +132,5 @@ hold off;
 p = predict(theta, X);
 
 fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
-fprintf('Expected accuracy (with lambda = 1): 83.1 (approx)\n');
+fprintf('Expected accuracy (with lambda = %f): 83.1 (approx)\n', lambda);
 
