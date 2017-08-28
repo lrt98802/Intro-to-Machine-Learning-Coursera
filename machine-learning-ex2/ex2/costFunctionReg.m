@@ -34,7 +34,7 @@ function [J, grad] = costFunctionReg(theta, X, y, lambda)
   % perform the summation and term-by-term multiplication
   theta_backup = theta;
   theta_backup(1) = 0; % not regularizing theta(1)
-  grad = ( sum(X .* delta, 1) / m ) + (theta_backup * lambda / m)';
+  grad = (sum(X .* delta, 1) / m)' + (theta_backup * lambda / m);
   
   
   % =============================================================
