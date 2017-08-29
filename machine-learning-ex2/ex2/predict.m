@@ -20,7 +20,7 @@ function p = predict(theta, X)
   
   for i = 1:m
     % threshold at 0.5
-    if(p(i) >= predict_threshold5)
+    if(p(i) >= predict_threshold)
       p(i) = 1;
     else
       p(i) = 0;
