@@ -16,10 +16,11 @@ function p = predict(theta, X)
   %
   
   p = sigmoid(X * theta);
+  predict_threshold = 0.5;
   
   for i = 1:m
     % threshold at 0.5
-    if(p(i) >= 0.5)
+    if(p(i) >= predict_threshold5)
       p(i) = 1;
     else
       p(i) = 0;
