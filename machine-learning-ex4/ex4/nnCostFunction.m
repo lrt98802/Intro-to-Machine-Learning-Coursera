@@ -63,6 +63,40 @@ Theta2_grad = zeros(size(Theta2));
 %
 
 
+% ====== First/Input Layer =======
+% Add bias units to input matrix X
+X = [ones(m,1) X];
+
+
+
+% ====== Second/Hidden Layer =======
+% Compute the activation units of the second layer
+z_2 = X * Theta1';
+a_2 = sigmoid(z_2); % apply the sigmoid function
+
+% Add bias units to activation units of the second layer
+a_2 = [ones(size(a_2, 1), 1) a_2];
+
+
+
+% ====== Third/Output Layer =======
+% Compute the activation units of the third layer
+z_3 = a_2 * Theta2';
+h_theta = sigmoid(z_3); % Apply the sigmoid function
+
+% Generate the y matrix where each row represents a 0/1 vector 
+yVec = zeros(m,num_labels);
+
+for i = 1:m
+    yVec(i,y(i)) = 1;
+endfor
+
+% Compute the cost function with double summation
+%J = sum(sum(( (y .* log(h_theta)) + ((1-y) .* log(1-h_theta)) ), 2)) / (-m);
+J = sum(sum(yVec .* log(h_theta) + (1-yVec) .* log(1-h_theta))) / (-m);
+
+
+
 
 
 
