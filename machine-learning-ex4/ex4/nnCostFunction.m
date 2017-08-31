@@ -92,21 +92,15 @@ for i = 1:m
 endfor
 
 % Compute the cost function with double summation
-%J = sum(sum(( (y .* log(h_theta)) + ((1-y) .* log(1-h_theta)) ), 2)) / (-m);
 J = sum(sum(yVec .* log(h_theta) + (1-yVec) .* log(1-h_theta))) / (-m);
 
+% Perform the regularization
+theta1_temp = Theta1(:, 2:size(Theta1,2)); % avoid regularizing the bias units
+theta2_temp = Theta2(:, 2:size(Theta2,2));
 
+reg_term = ( sum(sum(theta1_temp .^ 2),2) + sum(sum(theta2_temp .^ 2),2) ) / (2*m) * lambda ;
 
-
-
-
-
-
-
-
-
-
-
+J = J + reg_term;
 
 
 
