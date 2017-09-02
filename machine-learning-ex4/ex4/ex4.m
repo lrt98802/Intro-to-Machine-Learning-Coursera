@@ -103,38 +103,38 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 
-% %% ================ Part 5: Sigmoid Gradient  ================
-% %  Before you start implementing the neural network, you will first
-% %  implement the gradient for the sigmoid function. You should complete the
-% %  code in the sigmoidGradient.m file.
-% %
-% 
-% fprintf('\nEvaluating sigmoid gradient...\n')
-% 
-% g = sigmoidGradient([-1 -0.5 0 0.5 1]);
-% fprintf('Sigmoid gradient evaluated at [-1 -0.5 0 0.5 1]:\n  ');
-% fprintf('%f ', g);
-% fprintf('\n\n');
-% 
-% fprintf('Program paused. Press enter to continue.\n');
-% pause;
-% 
-% 
-% %% ================ Part 6: Initializing Pameters ================
-% %  In this part of the exercise, you will be starting to implment a two
-% %  layer neural network that classifies digits. You will start by
-% %  implementing a function to initialize the weights of the neural network
-% %  (randInitializeWeights.m)
-% 
-% fprintf('\nInitializing Neural Network Parameters ...\n')
-% 
-% initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size);
-% initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels);
-% 
-% % Unroll parameters
-% initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
-% 
-% 
+%% ================ Part 5: Sigmoid Gradient  ================
+%  Before you start implementing the neural network, you will first
+%  implement the gradient for the sigmoid function. You should complete the
+%  code in the sigmoidGradient.m file.
+%
+
+fprintf('\nEvaluating sigmoid gradient...\n')
+
+g = sigmoidGradient([-1 -0.5 0 0.5 1]);
+fprintf('Sigmoid gradient evaluated at [-1 -0.5 0 0.5 1]:\n  ');
+fprintf('%f ', g);
+fprintf('\n\n');
+
+fprintf('Program paused. Press enter to continue.\n');
+pause;
+
+
+%% ================ Part 6: Initializing Pameters ================
+%  In this part of the exercise, you will be starting to implment a two
+%  layer neural network that classifies digits. You will start by
+%  implementing a function to initialize the weights of the neural network
+%  (randInitializeWeights.m)
+
+fprintf('\nInitializing Neural Network Parameters ...\n')
+
+initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size);
+initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels);
+
+% Unroll parameters
+initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
+
+
 % %% =============== Part 7: Implement Backpropagation ===============
 % %  Once your cost matches up with ours, you should proceed to implement the
 % %  backpropagation algorithm for the neural network. You should add to the
