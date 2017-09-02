@@ -149,8 +149,8 @@ for i = 1:m
 endfor
 
 % Obtain the unregularized gradient 
-Theta2_grad = capital_Delta_2 ./ m;
 Theta1_grad = capital_Delta_1 ./ m;
+Theta2_grad = capital_Delta_2 ./ m;
 
 
 % -------------------------------------------------------------
