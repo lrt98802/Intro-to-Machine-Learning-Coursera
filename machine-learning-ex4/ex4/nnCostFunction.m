@@ -62,6 +62,7 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% Compute the Cost with regularization
 
 % ====== First/Input Layer =======
 % Add bias units to input matrix X
@@ -104,8 +105,52 @@ J = J + reg_term;
 
 
 
+% Compute the gradient
+
+% Initialize the capital delta for all layers (except the output layer)
+capital_Delta_1 = zeros(hidden_layer_size, input_layer_size+1);
+capital_Delta_2 = zeros(num_labels, hidden_layer_size+1);
 
 
+% Loop through all the input examples
+for i = 1:m
+  
+  % ====== First/Input Layer: Forward propagation =======
+  a_sub_1 = X(i,:);  % Set the values of a(1) to the ith training example
+  
+  
+  % ====== Second/Hidden Layer: Forward propagation =======
+  z_sub_2 = a_sub_1 * Theta1';
+  a_sub_2 = sigmoid(z_sub_2);
+  a_sub_2 = [1 a_sub_2]; % add bias unit
+  
+  % ====== Third/Output Layer: Forward propagation =======
+  z_sub_3 = a_sub_2 * Theta2';
+  a_sub_3 = sigmoid(z_sub_3); % this represents the output h_theta(x)
+  
+  % generate the y vector
+  y_out = zeros(num_labels, 1);
+  number = y(i); 
+  y_out(number) = 1;
+  
+  % Start back propagation
+  delta_3 = a_sub_3' - y_out; % vector delta_3 is of dimension num_labels
+  
+  % ====== Second/Hidden Layer: Back propagation =======
+  delta_2 =  Theta2' * delta_3 .* [1, sigmoidGradient(z_sub_2)]'; 
+  % remove the bias unit
+  delta_2 = delta_2(2:end); % vector delta_2 is of dimension hidden_layer_size
+  
+  % add up the value of capital delta for all layers (except the output layer)
+  capital_Delta_1 =  capital_Delta_1 + (delta_2 * a_sub_1);
+  capital_Delta_2 = capital_Delta_2 + (delta_3 * a_sub_2);
+  
+  
+endfor
+
+% Obtain the unregularized gradient 
+Theta2_grad = capital_Delta_2 ./ m;
+Theta1_grad = capital_Delta_1 ./ m;
 
 
 % -------------------------------------------------------------
