@@ -96,10 +96,10 @@ endfor
 J = sum(sum(yVec .* log(h_theta) + (1-yVec) .* log(1-h_theta))) / (-m);
 
 % Perform the regularization
-theta1_temp = Theta1(:, 2:size(Theta1,2)); % avoid regularizing the bias units
-theta2_temp = Theta2(:, 2:size(Theta2,2));
+theta1_reg = Theta1(:, 2:size(Theta1,2)); % avoid regularizing the bias units
+theta2_reg = Theta2(:, 2:size(Theta2,2));
 
-reg_term = ( sum(sum(theta1_temp .^ 2),2) + sum(sum(theta2_temp .^ 2),2) ) / (2*m) * lambda ;
+reg_term = ( sum(sum(theta1_reg .^ 2),2) + sum(sum(theta2_reg .^ 2),2) ) / (2*m) * lambda ;
 
 J = J + reg_term;
 
@@ -151,6 +151,14 @@ endfor
 % Obtain the unregularized gradient 
 Theta1_grad = capital_Delta_1 ./ m;
 Theta2_grad = capital_Delta_2 ./ m;
+
+
+% Perform the regularization
+theta1_reg = [zeros(hidden_layer_size, 1) theta1_reg];
+Theta1_grad += theta1_reg .* lambda ./ m;
+
+theta2_reg = [zeros(num_labels, 1) theta2_reg];
+Theta2_grad += theta2_reg .* lambda ./ m;
 
 
 % -------------------------------------------------------------
