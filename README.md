@@ -25,4 +25,5 @@ All the starter code and lecture slides are from Andrew Ng's Intro-to-Machine-Le
 
 ## Week 5
 - Neural Networks: Learning
+  - Backpropagation Algorithm
 - Programming Assignment 4: Neural Networks Learning
