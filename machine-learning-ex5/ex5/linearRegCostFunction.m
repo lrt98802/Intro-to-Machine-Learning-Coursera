@@ -19,12 +19,22 @@ function [J, grad] = linearRegCostFunction(X, y, theta, lambda)
   %               You should set J to the cost and grad to the gradient.
   %
   
-  cost = sum( ((X * theta) - y) .^ 2 ) / (2*m);
-  
+  % Compute the regularized costs
+  difference = (X * theta) - y;
+  cost = sum( difference .^ 2 ) / (2*m);
   reg_term = ( sum(theta .^ 2) - (theta(1) ^ 2) ) * lambda / (2*m);
   
-  J = cost + reg_term;
+  J = cost + reg_term; % Assign the costs
   
+  
+  % Compute the gradient
+  delta = [];
+  delta = repmat(difference, 1, size(X, 2)); % delta is now a mxm vectors
+  
+  % perform the summation and term-by-term multiplication
+  theta_backup = theta;
+  theta_backup(1) = 0; % not regularizing theta(1)
+  grad = (sum(X .* delta, 1) / m)' + (theta_backup * lambda / m);
   
   
   
