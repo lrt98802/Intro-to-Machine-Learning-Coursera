@@ -72,31 +72,31 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 
-% %% =========== Part 4: Train Linear Regression =============
-% %  Once you have implemented the cost and gradient correctly, the
-% %  trainLinearReg function will use your cost function to train 
-% %  regularized linear regression.
-% % 
-% %  Write Up Note: The data is non-linear, so this will not give a great 
-% %                 fit.
-% %
+%% =========== Part 4: Train Linear Regression =============
+%  Once you have implemented the cost and gradient correctly, the
+%  trainLinearReg function will use your cost function to train 
+%  regularized linear regression.
 % 
-% %  Train linear regression with lambda = 0
-% lambda = 0;
-% [theta] = trainLinearReg([ones(m, 1) X], y, lambda);
-% 
-% %  Plot fit over the data
-% plot(X, y, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
-% xlabel('Change in water level (x)');
-% ylabel('Water flowing out of the dam (y)');
-% hold on;
-% plot(X, [ones(m, 1) X]*theta, '--', 'LineWidth', 2)
-% hold off;
-% 
-% fprintf('Program paused. Press enter to continue.\n');
-% pause;
-% 
-% 
+%  Write Up Note: The data is non-linear, so this will not give a great 
+%                 fit.
+%
+
+%  Train linear regression with lambda = 0
+lambda = 0;
+[theta] = trainLinearReg([ones(m, 1) X], y, lambda);
+
+%  Plot fit over the data
+plot(X, y, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
+xlabel('Change in water level (x)');
+ylabel('Water flowing out of the dam (y)');
+hold on;
+plot(X, [ones(m, 1) X]*theta, '--', 'LineWidth', 2)
+hold off;
+
+fprintf('Program paused. Press enter to continue.\n');
+pause;
+
+
 % %% =========== Part 5: Learning Curve for Linear Regression =============
 % %  Next, you should implement the learningCurve function. 
 % %
