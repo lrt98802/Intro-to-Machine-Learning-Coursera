@@ -53,7 +53,23 @@ error_val   = zeros(m, 1);
 
 % ---------------------- Sample Solution ----------------------
 
-
+% Loop over the examples
+for i = 1:m
+  first_i_examples = X(1:i, :);
+  first_i_values = y(1:i);
+  
+  %  Train linear regression 
+  [learned_theta] = trainLinearReg(first_i_examples, first_i_values, lambda);
+  
+  % Compute training set error: no regularization
+  error_train(i) = linearRegCostFunction(first_i_examples, first_i_values, learned_theta, 0);
+  
+  % Compute CV error: no regularization
+  error_val(i) = linearRegCostFunction(Xval, yval, learned_theta, 0);
+  
+  
+  
+endfor
 
 
 
