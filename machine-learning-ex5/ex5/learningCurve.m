@@ -64,7 +64,7 @@ for i = 1:m
   % Compute training set error: no regularization
   error_train(i) = linearRegCostFunction(first_i_examples, first_i_values, learned_theta, 0);
   
-  % Compute CV error: no regularization
+  % Compute Cross validation error: no regularization
   error_val(i) = linearRegCostFunction(Xval, yval, learned_theta, 0);
   
   
