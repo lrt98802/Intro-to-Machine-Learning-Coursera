@@ -32,4 +32,5 @@ All the starter code and lecture slides are from Andrew Ng's Intro-to-Machine-Le
 - Advice for Applying Machine Learning
   - Bias vs Variance
   - Learning curve
+  - Validation curve
 - Machine Learning System Design
