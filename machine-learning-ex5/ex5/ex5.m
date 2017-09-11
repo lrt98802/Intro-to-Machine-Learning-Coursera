@@ -125,38 +125,38 @@ end
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
-% %% =========== Part 6: Feature Mapping for Polynomial Regression =============
-% %  One solution to this is to use polynomial regression. You should now
-% %  complete polyFeatures to map each example into its powers
-% %
-% 
-% p = 8;
-% 
-% % Map X onto Polynomial Features and Normalize
-% X_poly = polyFeatures(X, p);
-% [X_poly, mu, sigma] = featureNormalize(X_poly);  % Normalize
-% X_poly = [ones(m, 1), X_poly];                   % Add Ones
-% 
-% % Map X_poly_test and normalize (using mu and sigma)
-% X_poly_test = polyFeatures(Xtest, p);
-% X_poly_test = bsxfun(@minus, X_poly_test, mu);
-% X_poly_test = bsxfun(@rdivide, X_poly_test, sigma);
-% X_poly_test = [ones(size(X_poly_test, 1), 1), X_poly_test];         % Add Ones
-% 
-% % Map X_poly_val and normalize (using mu and sigma)
-% X_poly_val = polyFeatures(Xval, p);
-% X_poly_val = bsxfun(@minus, X_poly_val, mu);
-% X_poly_val = bsxfun(@rdivide, X_poly_val, sigma);
-% X_poly_val = [ones(size(X_poly_val, 1), 1), X_poly_val];           % Add Ones
-% 
-% fprintf('Normalized Training Example 1:\n');
-% fprintf('  %f  \n', X_poly(1, :));
-% 
-% fprintf('\nProgram paused. Press enter to continue.\n');
-% pause;
-% 
-% 
-% 
+%% =========== Part 6: Feature Mapping for Polynomial Regression =============
+%  One solution to this is to use polynomial regression. You should now
+%  complete polyFeatures to map each example into its powers
+%
+
+p = 8;
+
+% Map X onto Polynomial Features and Normalize
+X_poly = polyFeatures(X, p);
+[X_poly, mu, sigma] = featureNormalize(X_poly);  % Normalize
+X_poly = [ones(m, 1), X_poly];                   % Add Ones
+
+% Map X_poly_test and normalize (using mu and sigma)
+X_poly_test = polyFeatures(Xtest, p);
+X_poly_test = bsxfun(@minus, X_poly_test, mu);
+X_poly_test = bsxfun(@rdivide, X_poly_test, sigma);
+X_poly_test = [ones(size(X_poly_test, 1), 1), X_poly_test];         % Add Ones
+
+% Map X_poly_val and normalize (using mu and sigma)
+X_poly_val = polyFeatures(Xval, p);
+X_poly_val = bsxfun(@minus, X_poly_val, mu);
+X_poly_val = bsxfun(@rdivide, X_poly_val, sigma);
+X_poly_val = [ones(size(X_poly_val, 1), 1), X_poly_val];           % Add Ones
+
+fprintf('Normalized Training Example 1:\n');
+fprintf('  %f  \n', X_poly(1, :));
+
+fprintf('\nProgram paused. Press enter to continue.\n');
+pause;
+
+
+
 % %% =========== Part 7: Learning Curve for Polynomial Regression =============
 % %  Now, you will get to experiment with polynomial regression with multiple
 % %  values of lambda. The code below runs polynomial regression with 

@@ -31,4 +31,5 @@ All the starter code and lecture slides are from Andrew Ng's Intro-to-Machine-Le
 ## Week 6
 - Advice for Applying Machine Learning
   - Bias vs Variance
+  - Learning curve
 - Machine Learning System Design
