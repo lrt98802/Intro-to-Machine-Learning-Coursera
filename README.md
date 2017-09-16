@@ -34,3 +34,6 @@ All the starter code and lecture slides are from Andrew Ng's Intro-to-Machine-Le
   - Learning curve
   - Validation curve
 - Machine Learning System Design
+
+## Week 7 
+- Support Vector Machine(SVM)
